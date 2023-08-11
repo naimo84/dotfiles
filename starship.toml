@@ -1,0 +1,186 @@
+add_newline = true
+command_timeout = 1000
+format = "$env_var $all"
+
+[aws]
+symbol = " "
+
+[battery]
+charging_symbol = ""
+discharging_symbol = ""
+empty_symbol = ""
+full_symbol = ""
+unknown_symbol = ""
+
+[character]
+error_symbol = ""
+success_symbol = ""
+
+[cmake]
+symbol = "△ "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+read_only = " "
+
+[docker_context]
+disabled = true
+symbol = " "
+
+[dotnet]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[env_var]
+[env_var.STARSHIP_DEVICE]
+disabled = false
+format = "on [$env_value](bold yellow)"
+variable = "STARSHIP_DEVICE"
+
+[env_var.STARSHIP_DISTRO]
+disabled = false
+format = "[$env_value](bold white) "
+variable = "STARSHIP_DISTRO"
+
+[env_var.USER]
+disabled = false
+format = "[$env_value](bold white)"
+variable = "USER"
+
+[erlang]
+symbol = " "
+
+[gcloud]
+disabled = true
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[git_commit]
+tag_symbol = " "
+
+[git_status]
+ahead = " "
+behind = " "
+conflicted = " "
+deleted = " "
+diverged = " "
+format = "([$all_status$ahead_behind]($style) )"
+modified = " "
+renamed = " "
+staged = " "
+stashed = " "
+untracked = " "
+
+[golang]
+symbol = " "
+
+[helm]
+disabled = true
+symbol = "⎈ "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+disabled = false
+format = "[$hostname](bold yellow) | "
+ssh_only = false
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[kubernetes]
+format = "via [ﴱ $context($namespace)](bold purple) "
+symbol = "☸ "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+disabled = true
+symbol = " "
+
+[nim]
+symbol = " "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+disabled = true
+symbol = " "
+
+[openstack]
+symbol = " "
+
+[package]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[purescript]
+symbol = "<≡> "
+
+[python]
+disabled = true
+symbol = " "
+
+[ruby]
+disabled = true
+symbol = " "
+
+[rust]
+symbol = " "
+
+[shlvl]
+disabled = true
+symbol = " "
+
+[status]
+not_executable_symbol = " "
+not_found_symbol = " "
+sigint_symbol = " "
+signal_symbol = " "
+symbol = " "
+
+[swift]
+symbol = " "
+
+[terraform]
+disabled = true
+symbol = "𝗧 "
+
+[username]
+disabled = true
+
+[vagrant]
+disabled = true
+symbol = "𝗩 "
+
+[zig]
+symbol = " "
