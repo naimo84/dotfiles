@@ -1,5 +1,7 @@
 typeset -U path cdpath fpath manpath
 
+source $HOME/.config/zsh/zsh-autosuggestions.zsh
+
 # History options should be set in .zshrc and after oh-my-zsh sourcing.
 # See https://github.com/nix-community/home-manager/issues/177.
 HISTSIZE="10000"
@@ -15,6 +17,12 @@ setopt HIST_IGNORE_SPACE
 unsetopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY
 unsetopt EXTENDED_HISTORY
+
+
+if [[ $options[zle] = on ]]; then
+  . $HOME/.config/zsh/fzf-completion.zsh
+  . $HOME/.config/zsh/fzf-keybindings.zsh
+fi
 
 # find out which distribution we are running on
 LFILE="/etc/*-release"
