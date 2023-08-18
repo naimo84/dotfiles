@@ -65,6 +65,10 @@ alias sudo='sudo '
 alias vimdiff='nvim -d'
 alias xargs='xargs '
 
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # find out which distribution we are running on
 LFILE="/etc/*-release"
 MFILE="/System/Library/CoreServices/SystemVersion.plist"
