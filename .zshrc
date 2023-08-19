@@ -70,6 +70,10 @@ case $_distro in
     *)                       ICON="";;
 esac
 
+if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 if [ -f ~/.config/starship.toml ]; then
   export STARSHIP_DISTRO="$ICON"
   export STARSHIP_DEVICE="$DEVICE"
