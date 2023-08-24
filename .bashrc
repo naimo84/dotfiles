@@ -183,6 +183,10 @@ alias X1=" | xargs -N 1"
 alias XRG=" | xargs rg "
 alias LL=" | while IFS= read line; do "
 
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
+
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if command -v kubectl &> /dev/null
 then
