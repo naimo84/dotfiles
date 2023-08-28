@@ -1,6 +1,8 @@
 add_newline = true
 command_timeout = 1000
-format = "$env_var $all"
+format = """$env_var $all"""
+
+
 
 [aws]
 symbol = " "
@@ -13,8 +15,9 @@ full_symbol = ""
 unknown_symbol = ""
 
 [character]
-error_symbol = ""
-success_symbol = ""
+format = "❯❯ "
+success_symbol = "❯❯(bold green) "
+error_symbol = "❯❯(bold red) "
 
 [cmake]
 symbol = "△ "
@@ -29,6 +32,10 @@ symbol = " "
 symbol = " "
 
 [directory]
+format = "[$path]($style)[$read_only]($read_only_style) "
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
 read_only = " "
 
 [docker_context]
