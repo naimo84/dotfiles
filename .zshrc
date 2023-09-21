@@ -268,6 +268,10 @@ if [ -f ~/.zshenv ]; then
     source ~/.zshenv
 fi
 
+if [ -f ~/.zshcustom ]; then
+    source ~/.zshcustom
+fi
+
 if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
