@@ -18,6 +18,8 @@ unsetopt HIST_EXPIRE_DUPS_FIRST
 setopt SHARE_HISTORY
 unsetopt EXTENDED_HISTORY
 
+autoload -Uz compinit
+compinit -i
 
 if [[ $options[zle] = on ]]; then
   . $HOME/.config/zsh/fzf-completion.zsh
