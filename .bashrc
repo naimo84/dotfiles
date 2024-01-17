@@ -51,9 +51,9 @@ alias gundo='git undo'
 alias gup='git up'
 alias gx='git undo'
 
-alias la='exa --git -a'
-alias ll='exa -l -g -a --sort=modified --git'
-alias ls='exa --git'
+alias la='eza --git -a'
+alias ll='eza -l -g -a --sort=modified --git'
+alias ls='eza --git'
 alias mkdir='mkdir -pv'
 alias mv='mv -iv'
 alias nix-repl='nix repl'
@@ -144,7 +144,7 @@ function chpwd() {
         # don't generate output when changing directory in a script
         return
     fi
-    local listing="$(exa -l --sort=modified -r --git --color=always)"
+    local listing="$(eza -l --sort=modified -r --git --color=always)"
     local numdisplayfiles=22
     local numfiles="$(echo "$listing" | wc -l)"
     echo "$listing" | head -n"$numdisplayfiles"
