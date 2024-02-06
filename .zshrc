@@ -278,6 +278,8 @@ if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
 
+eval $(thefuck --alias)
+
 ###-begin-npm-completion-###
 #
 # npm command completion script
