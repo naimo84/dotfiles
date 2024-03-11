@@ -347,5 +347,5 @@ fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-eval "$(zoxide init --no-cmd zsh)"
-alias cd=__zoxide_z
+eval "$(zoxide init zsh --cmd cd)"
+
