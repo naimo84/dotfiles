@@ -15,7 +15,7 @@ full_symbol = ""
 unknown_symbol = ""
 
 [character]
-format = "❯❯ "
+format = " "
 success_symbol = "❯❯(bold green) "
 error_symbol = "❯❯(bold red) "
 

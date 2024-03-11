@@ -6,6 +6,9 @@ source $HOME/.config/zsh/zsh-autosuggestions.zsh
 # See https://github.com/nix-community/home-manager/issues/177.
 HISTSIZE="10000"
 SAVEHIST="100000"
+export LC_CTYPE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 
 HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
@@ -198,6 +201,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 
+
 # Aliases
 alias bat='bat -pp --theme base16-256 --italic-text always'
 alias c='fzf-cd-widget'
@@ -341,4 +345,7 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
-eval "$(zoxide init zsh)"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval "$(zoxide init --no-cmd zsh)"
+alias cd=__zoxide_z
