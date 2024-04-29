@@ -147,8 +147,9 @@ bindkey '^X^E' edit-command-line
 
 # make most keybindings also work in vim normal mode
 bindkey -v '^A' beginning-of-line
-bindkey -v '^B' backward-char
 bindkey -v '^E' end-of-line
+
+bindkey -v '^B' backward-char
 bindkey -v '^W' backward-delete-word
 bindkey -v '^K' kill-line
 bindkey -v '^T' transpose-chars
@@ -163,13 +164,11 @@ bindkey '^[[1;5D' backward-word # arrow-key left
 bindkey '  ' autosuggest-accept
 bindkey '^S' autosuggest-execute
 
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
 
 # in some terminals the delete character doesn't
 # work properly, so make sure it's bound
-bindkey    "^[[3~"          delete-char
-bindkey    "^[3;5~"         delete-char
+#bindkey    "^[[3~"          delete-char
+#bindkey    "^[3;5~"         delete-char
 
 # These global aliases will be replaced
 # by the respective command. These are evaluated
