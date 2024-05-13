@@ -32,3 +32,4 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt"
 export VISUAL="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
 fi
+. "$HOME/.cargo/env"
