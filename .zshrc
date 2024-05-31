@@ -9,6 +9,7 @@ SAVEHIST="100000"
 export LC_CTYPE="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
+export GIT_EDITOR=nvim
 
 HISTFILE="$HOME/.zsh_history"
 mkdir -p "$(dirname "$HISTFILE")"
@@ -348,3 +349,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 eval "$(zoxide init zsh --cmd cd)"
 
+
+# bun completions
+[ -s "/home/benjamin/.bun/_bun" ] && source "/home/benjamin/.bun/_bun"
