@@ -1,7 +1,9 @@
 # Only source this once
 if [[ -z "$__HM_ZSH_SESS_VARS_SOURCED" ]]; then
   export __HM_ZSH_SESS_VARS_SOURCED=1
-  export EDITOR="vim"
+fi
+
+export EDITOR="vim"
 export FZF_ALT_C_COMMAND="fd --type d"
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 export FZF_COMPLETION_TRIGGER="\\"
@@ -31,5 +33,7 @@ export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt"
 # export VIMPAGER_VIM="vim"
 export VISUAL="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+if [[ -f "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
 fi
-. "$HOME/.cargo/env"

@@ -1,7 +1,7 @@
 
 
 # Commands that should be applied only for interactive shells.
-[[ $- == *i* ]] || return
+#[[ $- == *i* ]] || return
 
 HISTFILESIZE=100000
 HISTSIZE=10000
@@ -191,7 +191,7 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if command -v kubectl &> /dev/null
 then
     export KUBECONFIG=~/.kube/config
-    source <(kubectl completion zsh)
+    source <(kubectl completion bash)
     alias k=kubectl
     complete -F __start_kubectl k
 fi
@@ -270,4 +270,7 @@ fi
 ###-end-npm-completion-###
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+if [ -f ~/.cargo/env ]; then
 . "$HOME/.cargo/env"
+fi 
