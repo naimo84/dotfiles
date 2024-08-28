@@ -6,6 +6,7 @@ if wezterm.config_builder then
 end
 
 config = {
+  use_ime = true,
   default_cursor_style = "BlinkingBlock",
   automatically_reload_config = true,
   window_close_confirmation = "NeverPrompt",
@@ -96,6 +97,7 @@ config = {
       mods = 'NONE',
       action = wezterm.action { SendString = "\x1bOF" },
     },
+  
   }
 }
 return config

@@ -1,0 +1,83 @@
+alias ll='ls -l'
+alias vi='nvim'
+alias vim='nvim'
+
+
+
+# Aliases
+alias bat='bat -pp --theme base16-256 --italic-text always'
+alias c='fzf-cd-widget'
+alias cp='cp -iv'
+alias curl='curl -v'
+alias df='df -h'
+alias du='du -h'
+alias gD='nvim -c :Gdiff'
+alias gL='vim -s /nix/store/q66nfnfmyj2wv4azkqvqzxr91z69ydp4-vim-git-log .'
+alias gS='vim -c '\'':Gstatus'\'' -c '\''wincmd w'\'' -c '\''close'\'' +/Unstaged'
+alias ga='git a'
+alias gap='git ap'
+alias gb='git branch'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcf='git commit --fixup=`fzf-commit`'
+alias gco='git co'
+alias gcop='git cop'
+alias gcp='git cp'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias gdt='git difftool'
+alias gf='git f'
+alias gfwd='git forward'
+alias gfx='git rebase --autostash --autosquash --interactive'
+alias github='gh'
+alias gk='git k'
+alias gkp='git kp'
+alias gl='git log'
+alias glp='git log --patch'
+alias gm='git m'
+alias gmt='git mergetool'
+alias gp='git p'
+alias gpl='git pl'
+alias gplr='git plr'
+alias grep='grep --color=auto'
+alias gs='git status'
+alias gu='git unstage'
+alias gundo='git undo'
+alias gup='git up'
+alias gx='git undo'
+alias home-config='vim ~/.config/nixpkgs/home.nix'
+alias hs='home-manager switch'
+alias hsu='nix-channel --update && home-manager switch'
+alias la='eza --git -a'
+alias ll='eza -l -g -a --sort=modified --git'
+alias ls='eza --git'
+alias mkdir='mkdir -pv'
+alias mv='mv -iv'
+alias nix-repl='nix repl'
+alias p='bat'
+alias pc='bat -d --color=always'
+alias rm='rm -iv'
+alias sudo='sudo '
+alias system-config='sudo vim /etc/nixos/configuration.nix'
+alias vimdiff='nvim -d'
+alias xargs='xargs '
+
+
+# These global aliases will be replaced
+# by the respective command. These are evaluated
+# before any other expansion takes place.
+alias -g P=" pbpaste | "
+alias -g Y=" | pbcopy"
+alias -g L=" | less"
+alias -g V=" | vimpager"
+alias -g S=" | rg -n "
+alias -g C=" | rg -c "
+alias -g F=" | tail -f "
+alias -g T=" | tail"
+alias -g H=" | head"
+alias -g W=" | entr "
+alias -g NE=" 2>/dev/null"
+alias -g X=" | xargs"
+alias -g X1=" | xargs -N 1"
+alias -g XRG=" | xargs rg "
+alias -g LL=" | while IFS= read line; do "
