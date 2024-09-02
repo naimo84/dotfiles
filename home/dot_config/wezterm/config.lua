@@ -16,6 +16,8 @@ config = {
   use_fancy_tab_bar = true,
   tab_bar_at_bottom = false,
   font_size = 14,
+  initial_rows = 50,
+  initial_cols = 120,
   font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
   enable_tab_bar = true,
   window_padding = {
