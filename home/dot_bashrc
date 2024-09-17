@@ -1,6 +1,3 @@
-
-
-# Commands that should be applied only for interactive shells.
 [[ $- == *i* ]] || return
 
 HISTFILESIZE=100000
@@ -11,59 +8,6 @@ shopt -s checkwinsize
 shopt -s extglob
 shopt -s globstar
 shopt -s checkjobs
-
-alias bat='bat -pp --theme base16-256 --italic-text always'
-alias c='fzf-cd-widget'
-alias cp='cp -iv'
-alias curl='curl -v'
-alias df='df -h'
-alias du='du -h'
-alias gD='nvim -c :Gdiff'
-alias gS='vim -c '\'':Gstatus'\'' -c '\''wincmd w'\'' -c '\''close'\'' +/Unstaged'
-alias ga='git a'
-alias gap='git ap'
-alias gb='git branch'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gcf='git commit --fixup=`fzf-commit`'
-alias gco='git co'
-alias gcop='git cop'
-alias gcp='git cp'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias gdt='git difftool'
-alias gf='git f'
-alias gfwd='git forward'
-alias gfx='git rebase --autostash --autosquash --interactive'
-alias gk='git k'
-alias gkp='git kp'
-alias gl='git log'
-alias glp='git log --patch'
-alias gm='git m'
-alias gmt='git mergetool'
-alias gp='git p'
-alias gpl='git pl'
-alias gplr='git plr'
-alias grep='grep --color=auto'
-alias gs='git status'
-alias gu='git unstage'
-alias gundo='git undo'
-alias gup='git up'
-alias gx='git undo'
-
-alias la='eza --git -a'
-alias ll='eza -l -g -a --sort=modified --git'
-alias ls='eza --git'
-alias mkdir='mkdir -pv'
-alias mv='mv -iv'
-alias nix-repl='nix repl'
-alias p='bat'
-alias pc='bat -d --color=always'
-alias rm='rm -iv'
-alias sudo='sudo '
-
-alias vimdiff='nvim -d'
-alias xargs='xargs '
 
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -115,11 +59,14 @@ case $_distro in
     *)                       ICON="";;
 esac
 
-if [ -f ~/.config/starship.toml ]; then
-  export STARSHIP_DISTRO="$ICON "
-  export STARSHIP_DEVICE="$DEVICE"
-  export STARSHIP_CONFIG=~/.config/starship.toml
-  eval "$(starship init bash)"
+if command -v starship &> /dev/null
+then
+  if [ -f ~/.config/starship.toml ]; then
+    export STARSHIP_DISTRO="$ICON "
+    export STARSHIP_DEVICE="$DEVICE"
+    export STARSHIP_CONFIG=~/.config/starship.toml
+    eval "$(starship init bash)"
+  fi
 fi
 
 # disable standard terminal function CTRL-Q and CTRL-S
@@ -164,25 +111,6 @@ f() {
   return $?
 }
 
-# These global aliases will be replaced
-# by the respective command. These are evaluated
-# before any other expansion takes place.
-alias P=" pbpaste | "
-alias Y=" | pbcopy"
-alias L=" | less"
-alias V=" | vimpager"
-alias S=" | rg -n "
-alias C=" | rg -c "
-alias F=" | tail -f "
-alias T=" | tail"
-alias H=" | head"
-alias W=" | entr "
-alias NE=" 2>/dev/null"
-alias X=" | xargs"
-alias X1=" | xargs -N 1"
-alias XRG=" | xargs rg "
-alias LL=" | while IFS= read line; do "
-
 if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
@@ -203,19 +131,8 @@ fi
 export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-alias ll='ls -l'
-alias vi='nvim'
-alias vim='nvim'
-
 
 ###-begin-npm-completion-###
-#
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
-
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword

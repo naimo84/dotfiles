@@ -2,8 +2,6 @@ typeset -U path cdpath fpath manpath
 
 source $HOME/.config/zsh/zsh-autosuggestions.zsh
 
-# History options should be set in .zshrc and after oh-my-zsh sourcing.
-# See https://github.com/nix-community/home-manager/issues/177.
 HISTSIZE="10000"
 SAVEHIST="100000"
 export LC_CTYPE="en_US.UTF-8"
@@ -79,12 +77,16 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-if [ -f ~/.config/starship.toml ]; then
-  export STARSHIP_DISTRO="$ICON"
-  export STARSHIP_DEVICE="$DEVICE"
-  export STARSHIP_CONFIG=~/.config/starship.toml
-  eval "$(starship init zsh)"
+if command -v starship &> /dev/null
+then
+  if [ -f ~/.config/starship.toml ]; then
+    export STARSHIP_DISTRO="$ICON"
+    export STARSHIP_DEVICE="$DEVICE"
+    export STARSHIP_CONFIG=~/.config/starship.toml
+    eval "$(starship init zsh)"
+  fi
 fi
+
 
 # disable standard terminal function CTRL-Q and CTRL-S
 # to stop output and resume
@@ -171,8 +173,6 @@ bindkey '^S' autosuggest-execute
 #bindkey    "^[3;5~"         delete-char
 
 
-
-
 export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
@@ -199,13 +199,6 @@ if [ -f ~/.zsh_aliases ]; then
 fi
 
 ###-begin-npm-completion-###
-#
-# npm command completion script
-#
-# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
-# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
-#
-
 if type complete &>/dev/null; then
   _npm_completion () {
     local words cword
