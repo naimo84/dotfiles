@@ -172,11 +172,6 @@ bindkey '^S' autosuggest-execute
 #bindkey    "^[[3~"          delete-char
 #bindkey    "^[3;5~"         delete-char
 
-
-export NVM_DIR="$HOME/.nvm"
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if command -v kubectl &> /dev/null
 then
@@ -184,6 +179,16 @@ then
     source <(kubectl completion zsh)
     alias k=kubectl
     complete -F __start_kubectl k
+fi
+
+if command -v zoxide &> /dev/null
+then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
+if command -v thefuck &> /dev/null
+then
+  eval $(thefuck --alias)
 fi
 
 if [ -f ~/.zshenv ]; then
@@ -250,7 +255,9 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
+
+export NVM_DIR="$HOME/.nvm"
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 ###-end-npm-completion-###
 
-eval "$(zoxide init zsh --cmd cd)"
-eval $(thefuck --alias)
