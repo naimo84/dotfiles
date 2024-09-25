@@ -124,6 +124,11 @@ then
     complete -F __start_kubectl k
 fi
 
+if command -v fzf &> /dev/null
+then
+  eval "$(fzf --bash)"
+fi
+
 if [ -f ~/.zshenv ]; then
     source ~/.zshenv
 fi
