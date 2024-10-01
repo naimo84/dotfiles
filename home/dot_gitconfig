@@ -1,3 +1,12 @@
 [user]
 	name = naimo84
 	email = git@naimo84.dev
+
+[push]
+	default = upstream
+
+[pull]
+	rebase = true
+
+[init]
+	defaultBranch = main
