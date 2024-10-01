@@ -121,6 +121,9 @@ local plugins = {
     cmd = "Glow",
     ft = "markdown",
   },
+  {
+    "folke/which-key.nvim"
+}
 }
 
 return plugins

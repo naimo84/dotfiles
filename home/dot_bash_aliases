@@ -1,6 +1,8 @@
 alias ll='ls -l'
-alias vi='nvim'
-alias vim='nvim'
+if command -v nvim &> /dev/null; then
+  alias vi='nvim'
+  alias vim='nvim'
+fi
 
 alias bat='bat -pp --theme base16-256 --italic-text always'
 alias c='fzf-cd-widget'
