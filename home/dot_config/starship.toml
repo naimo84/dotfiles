@@ -1,193 +1,67 @@
-add_newline = true
-command_timeout = 1000
-format = """$env_var $all"""
+format = """\
+[](bg:#030B16 fg:#7DF9AA)\
+[${env_var.STARSHIP_DISTRO}${env_var.USER}](bg:#7DF9AA fg:#090c0c)\
+[](fg:#7DF9AA bg:#1C3A5E)\
+$time\
+[](fg:#1C3A5E bg:#3B76F0)\
+$directory\
+[](fg:#3B76F0 bg:#FCF392)\
+$git_branch\
+$git_status\
+$git_metrics\
+[](fg:#FCF392 bg:#030B16)\
+$character\
+"""
 
-
-
-[aws]
-symbol = " "
-
-[battery]
-charging_symbol = ""
-discharging_symbol = ""
-empty_symbol = ""
-full_symbol = ""
-unknown_symbol = ""
-
-[character]
-format = " "
-success_symbol = "❯❯(bold green) "
-error_symbol = "❯❯(bold red) "
-
-[cmake]
-symbol = "△ "
-
-[conda]
-symbol = " "
-
-[crystal]
-symbol = " "
-
-[dart]
-symbol = " "
-
-[directory]
-format = "[$path]($style)[$read_only]($read_only_style) "
-truncation_length = 4
-truncate_to_repo = false
-truncation_symbol = "…/"
-read_only = " "
-
-[docker_context]
-disabled = true
-symbol = " "
-
-[dotnet]
-symbol = " "
-
-[elixir]
-symbol = " "
-
-[elm]
-symbol = " "
 
 [env_var]
-[env_var.STARSHIP_DEVICE]
-disabled = false
-format = "on [$env_value](bold yellow)"
-variable = "STARSHIP_DEVICE"
-
 [env_var.STARSHIP_DISTRO]
 disabled = false
-format = "[$env_value](bold white) "
+format = "[$env_value](bg:#7DF9AA fg:#000000)"
 variable = "STARSHIP_DISTRO"
 
 [env_var.USER]
 disabled = false
-format = "[$env_value](bold white)"
+format = "[$env_value](bg:#7DF9AA fg:#000000)"
 variable = "USER"
 
-[erlang]
-symbol = " "
-
-[gcloud]
-disabled = true
-symbol = " "
+[directory]
+format = "[  $path ]($style)"
+style = "fg:#E4E4E4 bg:#3B76F0"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
 
 [git_branch]
-symbol = " "
-
-[git_commit]
-tag_symbol = " "
+format = '[ $symbol$branch(:$remote_branch) ]($style)'
+symbol = "  "
+style = "fg:#1C3A5E bg:#FCF392"
 
 [git_status]
-ahead = " "
-behind = " "
-conflicted = " "
-deleted = " "
-diverged = " "
-format = "([$all_status$ahead_behind]($style) )"
-modified = " "
-renamed = " "
-staged = " "
-stashed = " "
-untracked = " "
+format = '[$all_status]($style)'
+style = "fg:#1C3A5E bg:#FCF392"
 
-[golang]
-symbol = " "
-
-[helm]
-disabled = true
-symbol = "⎈ "
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
 
 [hg_branch]
+format = "[ $symbol$branch ]($style)"
 symbol = " "
 
-[hostname]
+[cmd_duration]
+format = "[  $duration ]($style)"
+style = "fg:bright-white bg:18"
+
+[character]
+success_symbol = '[ ➜](bold green) '
+error_symbol = '[ ✗](#E84D44) '
+
+[time]
 disabled = false
-format = "[$hostname](bold yellow) | "
-ssh_only = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 
-[java]
-symbol = " "
-
-[julia]
-symbol = " "
-
-[kotlin]
-symbol = " "
-
-[kubernetes]
-format = "via [ﴱ $context($namespace)](bold purple) "
-symbol = "☸ "
-
-[lua]
-symbol = " "
-
-[memory_usage]
-disabled = true
-symbol = " "
-
-[nim]
-symbol = " "
-
-[nix_shell]
-symbol = " "
-
-[nodejs]
-disabled = true
-symbol = " "
-
-[openstack]
-symbol = " "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[purescript]
-symbol = "<≡> "
-
-[python]
-disabled = true
-symbol = " "
-
-[ruby]
-disabled = true
-symbol = " "
-
-[rust]
-symbol = " "
-
-[shlvl]
-disabled = true
-symbol = " "
-
-[status]
-not_executable_symbol = " "
-not_found_symbol = " "
-sigint_symbol = " "
-signal_symbol = " "
-symbol = " "
-
-[swift]
-symbol = " "
-
-[terraform]
-disabled = true
-symbol = "𝗧 "
-
-[username]
-disabled = true
-
-[vagrant]
-disabled = true
-symbol = "𝗩 "
-
-[zig]
-symbol = " "
