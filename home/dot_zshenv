@@ -27,7 +27,6 @@ export LC_NAME="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_PAPER="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
-
 # export PAGER="vimpager -u ~/.vimpagerrc"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt"
 # export VIMPAGER_RC="$HOME/.vimpagerrc"
