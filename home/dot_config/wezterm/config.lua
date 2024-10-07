@@ -29,7 +29,7 @@ config = {
   background = {    
     {
       source = {
-        Color = "#1e2030",
+        Color = "#2e2f41",
       },
       width = "100%",
       height = "100%",
