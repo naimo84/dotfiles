@@ -10,3 +10,6 @@
 
 [init]
 	defaultBranch = main
+
+[credential]
+    helper = store --file ~/.my-git-credentials
