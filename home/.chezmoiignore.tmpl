@@ -4,4 +4,16 @@ LICENSE
 
 {{ if ne .chezmoi.os "darwin" }}
 .osx
+Brewfile
+.config/karabiner
+{{ end }}
+
+{{ if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
+.bash_aliases
+.bashrc
+.zsh_aliases
+.zshrc
+.zshenv
+.config/nvim
+.config/zsh
 {{ end }}
