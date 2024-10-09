@@ -1,5 +1,10 @@
 local wezterm = require("wezterm")
 local config = {}
+-- The filled in variant of the < symbol
+local SOLID_LEFT_ARROW = wezterm.nerdfonts.pl_right_hard_divider
+
+-- The filled in variant of the > symbol
+local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 
 if wezterm.config_builder then
   config = wezterm.config_builder()
@@ -16,8 +21,8 @@ config = {
   use_fancy_tab_bar = true,
   tab_bar_at_bottom = false,
   font_size = 14,
-  initial_rows = 50,
-  initial_cols = 120,
+  initial_rows = 20,
+  initial_cols = 100,
   font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
   enable_tab_bar = true,
   window_padding = {
@@ -102,4 +107,55 @@ config = {
   
   }
 }
+
+
+-- This function returns the suggested title for a tab.
+-- It prefers the title that was set via `tab:set_title()`
+-- or `wezterm cli set-tab-title`, but falls back to the
+-- title of the active pane in that tab.
+function tab_title(tab_info)
+  local title = tab_info.tab_title
+  -- if the tab title is explicitly set, take that
+  if title and #title > 0 then
+    return title
+  end
+  -- Otherwise, use the title from the active pane
+  -- in that tab
+  return tab_info.active_pane.title
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local edge_background = '#CCC'
+    local background = '#CCC'
+    local foreground = '#888'
+
+    if tab.is_active then
+      background = '#2b2042'
+      foreground = '#FFF'
+    end
+
+    local edge_foreground = background
+
+    local title = tab_title(tab)
+
+    -- ensure that the titles fit in the available space,
+    -- and that we have room for the edges.
+    title = wezterm.truncate_right(title, max_width - 2)
+
+    return {
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = SOLID_LEFT_ARROW },
+      { Background = { Color = background } },
+      { Foreground = { Color = foreground } },
+      { Text = title },
+      { Background = { Color = edge_background } },
+      { Foreground = { Color = edge_foreground } },
+      { Text = SOLID_RIGHT_ARROW },
+    }
+  end
+)
+
 return config
