@@ -18,3 +18,7 @@ Brewfile
 .config/nvim
 .config/zsh
 {{ end }}
+
+{{ if ne .chezmoi.os "darwin" }}
+Documents
+{{ end }}

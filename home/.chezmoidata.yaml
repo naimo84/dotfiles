@@ -1,0 +1,10 @@
+winget_packages:
+  all:
+    - JernejSimoncic.Wget
+    - Microsoft.WindowsTerminal
+    - Microsoft.VisualStudioCode
+    - eza-community.eza
+  home:
+    - jqlang.jq
+  work:
+    - Kubernetes.kubectl
