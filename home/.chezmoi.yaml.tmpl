@@ -30,10 +30,10 @@ config_info: |
    {{- writeToStdout (list $profile | join " ") -}}
 
   {{- range $i := until 5 -}}
-  {{-   if regexMatch "^((personal)|(work\\d))$" $profile -}}
+  {{-   if regexMatch "^((personal)|(work))$" $profile -}}
   {{-     break -}}
   {{-   else -}}
-  {{-     $profile = promptString "Which profile should be used for this machine? (personal/work1/work2)" -}}
+  {{-     $profile = promptString "Which profile should be used for this machine? (personal/work)" -}}
   {{-   end -}}
   {{-   if eq $i 4 -}}
   {{-     writeToStdout "❌ ERROR: Invalid profile selected\n" -}}
