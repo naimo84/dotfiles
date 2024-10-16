@@ -48,7 +48,7 @@ config_info: |
   {{- if and
         (stat (joinPath .chezmoi.homeDir ".config/chezmoi/key.txt"))
         (stat (joinPath .chezmoi.homeDir ".config/chezmoi/chezmoi.yaml")) -}}
-  {{-   $enc_data = include (joinPath .chezmoi.workingTree "home/.data/chezmoidata.yaml.age") | decrypt | fromYaml -}}
+  
   {{- end -}}
 
   {{- $profiles := coalesce $enc_data.profiles .profiles -}}
