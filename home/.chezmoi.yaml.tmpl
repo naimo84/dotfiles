@@ -1,0 +1,109 @@
+# chezmoi:template:missing-key=invalid
+config_info: |
+  {{- $interactive := stdinIsATTY -}}
+  {{- $ephemeral := false -}}
+  {{- $profile := coalesce (env "DATA_profile") (get . "profile") "<no value>" -}}
+  {{- $name := .name -}}
+  {{- $email := .email -}}
+
+  {{- $is_wsl := false -}}
+  {{- if .chezmoi.kernel -}}
+  {{-   if hasKey .chezmoi.kernel "osrelease" -}}
+  {{-     $is_wsl = (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+  {{-   end -}}
+  {{- end -}}
+
+  {{- $is_desktop := or ($is_wsl) (eq .chezmoi.os "windows") (eq (env "IS_DESKTOP") "true") -}}
+
+  {{- $is_server := not $is_desktop -}}
+  {{- $workingTree := .chezmoi.workingTree -}}
+  {{- $username := .chezmoi.username -}}
+
+  {{- $script_ext := "sh" -}}
+  {{- if eq .chezmoi.os "windows" -}}
+  {{-   $script_ext = "bat" -}}
+  {{-   $workingTree = printf "%s%s" .chezmoi.homeDir "/AppData/Local/chezmoi" -}}
+  {{-   $username = env "USERNAME" -}}
+  {{- end -}}
+
+  {{- $use_encrypted_data := and $interactive (not $ephemeral) (not $is_server) -}}
+   {{- writeToStdout (list $profile | join " ") -}}
+
+  {{- range $i := until 5 -}}
+  {{-   if regexMatch "^((personal)|(work\\d))$" $profile -}}
+  {{-     break -}}
+  {{-   else -}}
+  {{-     $profile = promptString "Which profile should be used for this machine? (personal/work1/work2)" -}}
+  {{-   end -}}
+  {{-   if eq $i 4 -}}
+  {{-     writeToStdout "❌ ERROR: Invalid profile selected\n" -}}
+  {{-     exit 1 -}}
+  {{-   end -}}
+  {{- end -}}
+
+  {{- $personal_device := eq $profile "personal" -}}
+  {{- $work_device := ne $profile "personal" -}}
+
+  {{- $enc_data := dict -}}
+  {{- if and
+        (stat (joinPath .chezmoi.homeDir ".config/chezmoi/key.txt"))
+        (stat (joinPath .chezmoi.homeDir ".config/chezmoi/chezmoi.yaml")) -}}
+  {{-   $enc_data = include (joinPath .chezmoi.workingTree "home/.data/chezmoidata.yaml.age") | decrypt | fromYaml -}}
+  {{- end -}}
+
+  {{- $profiles := coalesce $enc_data.profiles .profiles -}}
+  {{- if $profiles -}}
+  {{-   $profile_data := get $profiles $profile -}}
+  {{-   $email = $profile_data.email -}}
+  {{- end -}}
+
+  {{ "" }}
+  Generated for user={{ $username }}, hostname={{ .chezmoi.hostname }}
+
+edit:
+  command: "code"
+  args: ["--wait"]
+
+encryption: age
+age:
+  identity: "~/.config/chezmoi/key.txt"
+  recipient: "age1cckqh88dv9m75dcd9ftkjqxuc6y8zsvp40yavdkp37l5cvajraxs0lxnlj"
+
+interpreters:
+  ps1:
+    # Prefer PowerShell Core over PowerShell Desktop
+    # https://github.com/PowerShell/PowerShell/issues/8635#issuecomment-454028787
+    command: '{{ if env "CHEZMOI_PS1_COMMAND" }}{{ env "CHEZMOI_PS1_COMMAND" }}{{ else if lookPath "pwsh.exe" }}pwsh.exe{{ else }}powershell.exe{{ end }}'
+    args: ["-NoLogo", "-NoProfile"]
+
+data:
+  use_encrypted_data: {{ $use_encrypted_data }}
+  is_wsl: {{ $is_wsl }}
+  is_server: {{ $is_server }}
+  is_desktop: {{ $is_desktop  }}
+{{- if eq .chezmoi.os "linux" }}
+  uname:
+    machine: '{{ output "uname" "-m" | trim }}'
+{{- end }}
+  profile: {{ $profile }}
+  personal_device: {{ $personal_device }}
+  work_device: {{ $work_device }}
+  email: {{ $email }}
+  name: {{ $name }}
+
+{{- $git := coalesce $enc_data.git .git -}}
+{{- if $git }}
+  git:
+    signingkey: {{ $git.signingkey }}
+{{- end }}
+
+{{- $password_store := coalesce $enc_data.password_store .password_store -}}
+{{- if $password_store }}
+  password_store:
+    repo: {{ $password_store.repo }}
+{{- end }}
+
+{{- if $profiles }}
+  profiles:
+{{ $profiles | toYaml | indent 4 }}
+{{- end }}

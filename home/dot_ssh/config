@@ -28,3 +28,6 @@ Host external-container
   HostName external-container
   User naimo  
   ProxyJump internal-container.teleport
+
+Host *.int.naimo84.dev
+  User naimo
