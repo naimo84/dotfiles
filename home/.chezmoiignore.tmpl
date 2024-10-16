@@ -1,6 +1,8 @@
 README.md
 LICENSE
 .git
+key.txt.age
+
 
 {{ if ne .chezmoi.os "darwin" }}
 .osx
@@ -19,6 +21,11 @@ Brewfile
 .config/zsh
 {{ end }}
 
+{{- if ne .chezmoi.os "linux" -}}
+.chezmoiscripts/linux/**
+{{- end -}}
+
 {{ if ne .chezmoi.os "windows" }}
 Documents
+.chezmoiscripts/windows/**
 {{ end }}
