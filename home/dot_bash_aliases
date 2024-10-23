@@ -64,7 +64,7 @@ if command -v eza &> /dev/null; then
   alias ls='eza --git'
 else
   alias la='ls -la'
-  alias ll='ls -l -g -a --sort=time --git'
+  alias ll='ls -l -g -a --sort=time'
   alias ls='ls'
 fi
 
