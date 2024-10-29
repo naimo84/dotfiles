@@ -76,6 +76,9 @@ interpreters:
     command: '{{ if env "CHEZMOI_PS1_COMMAND" }}{{ env "CHEZMOI_PS1_COMMAND" }}{{ else if lookPath "pwsh.exe" }}pwsh.exe{{ else }}powershell.exe{{ end }}'
     args: ["-NoLogo", "-NoProfile"]
 
+diff:
+  exclude: ["scripts"]
+
 data:
   use_encrypted_data: {{ $use_encrypted_data }}
   is_wsl: {{ $is_wsl }}
