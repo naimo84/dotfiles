@@ -8,3 +8,10 @@ winget_packages:
     - jqlang.jq
   work:
     - Kubernetes.kubectl
+
+brew_packages:
+  all:   
+    - 'git'
+  desktop:
+    - 'starship'
+  

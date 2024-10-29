@@ -27,7 +27,6 @@ config_info: |
   {{- end -}}
 
   {{- $use_encrypted_data := and $interactive (not $ephemeral) (not $is_server) -}}
-   {{- writeToStdout (list $profile | join " ") -}}
 
   {{- range $i := until 5 -}}
   {{-   if regexMatch "^((personal)|(work))$" $profile -}}
