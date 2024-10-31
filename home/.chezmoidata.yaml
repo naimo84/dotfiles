@@ -9,9 +9,7 @@ winget_packages:
   work:
     - Kubernetes.kubectl
 
-brew_packages:
-  all:   
-    - 'git'
+brew_packages:  
   desktop:
     - 'starship'
   

@@ -11,6 +11,7 @@
 
 
     {{ range $brew_packages -}}
+        echo {{ . | quote }}
         brew install {{ . | quote }}
     {{ end -}}
 
