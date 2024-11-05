@@ -1,0 +1,4 @@
+### Spell Files
+spell/*.spl
+!spell/*.add.spl
+spell/*.sug

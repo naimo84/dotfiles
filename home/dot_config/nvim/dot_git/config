@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = https://github.com/SRTigers98/nvchad-config
+	fetch = +refs/heads/scratch:refs/remotes/origin/scratch
+[branch "scratch"]
+	remote = origin
+	merge = refs/heads/scratch
