@@ -24,10 +24,13 @@ Host ldap
   User naimo  
   ProxyJump internal-container.teleport
 
-Host external-container
-  HostName external-container
-  User naimo  
-  ProxyJump internal-container.teleport
+Host external-containers
+  HostName 10.10.0.16
 
 Host *.int.naimo84.dev
   User naimo
+
+Host 1337
+  HostName 1337.tail1ae98.ts.net
+  User naimo 
+  ProxyJump naimo@10.0.0.70
