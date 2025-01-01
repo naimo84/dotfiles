@@ -118,3 +118,34 @@ bindkey -M viins '^R' fzf-history-widget
   eval $__fzf_key_bindings_options
   'unset' '__fzf_key_bindings_options'
 }
+
+# --------------------------------------------------------------------------------------------
+
+# shift-tab : go backward in menu (invert of tab)
+bindkey '^[[Z' reverse-menu-complete
+
+# make sure the FZF keybindings work
+# bindkey '^I' fzf-completion #, disabled as it breaks on NixOS
+bindkey '\ef' fzf-file-widget
+bindkey '\ec' fzf-cd-widget
+bindkey '^R' fzf-history-widget
+
+# make most keybindings also work in vim normal mode
+bindkey -v '^A' beginning-of-line
+bindkey -v '^E' end-of-line
+
+bindkey -v '^W' backward-delete-word
+# alt+<- | alt+->
+bindkey -v '^[f' forward-word
+bindkey -v '^[b' backward-word
+# ctrl+<- | ctrl+->
+bindkey '^[[1;5C' forward-word # arrow-key right
+bindkey '^[[1;5D' backward-word # arrow-key left
+bindkey '  ' autosuggest-accept
+bindkey '^S' autosuggest-execute
+
+
+# in some terminals the delete character doesn't
+# work properly, so make sure it's bound
+#bindkey    "^[[3~"          delete-char
+#bindkey    "^[3;5~"         delete-char

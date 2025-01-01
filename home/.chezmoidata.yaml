@@ -1,3 +1,4 @@
+---
 winget_packages:
   all:
     - JernejSimoncic.Wget
@@ -9,7 +10,6 @@ winget_packages:
   work:
     - Kubernetes.kubectl
 
-brew_packages:  
+brew_packages:
   desktop:
-    - 'starship'
-  
+    - "starship"

@@ -1,0 +1,18 @@
+{{ if eq .chezmoi.os "linux" -}}
+    #!/bin/bash
+    {{ $brew_packages := concat
+        (dig "all" list .brew_packages) -}}
+    {{ if eq .is_desktop true -}}
+        {{ $brew_packages = concat
+        (dig "all" list .brew_packages)
+        (dig "desktop" list .brew_packages)
+        -}}
+    {{ end -}}
+
+
+    {{ range $brew_packages -}}
+        echo {{ . | quote }}
+        brew install {{ . | quote }}
+    {{ end -}}
+
+{{ end -}}

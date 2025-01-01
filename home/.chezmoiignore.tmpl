@@ -2,7 +2,7 @@ README.md
 LICENSE
 .git
 key.txt.age
-
+.oh-my-zsh/cache
 
 {{ if ne .chezmoi.os "darwin" }}
 .osx
@@ -11,6 +11,7 @@ Brewfile
 .config/ghostty
 .config/wezterm
 .ssh
+.oh-my-zsh
 {{ end }}
 
 {{ if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
