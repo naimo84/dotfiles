@@ -1,6 +1,11 @@
 typeset -U path cdpath fpath manpath
 
-source $HOME/.config/zsh/zsh-autosuggestions.zsh
+if command -v brew &> /dev/null
+then
+  source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+  source $HOME/.config/zsh/zsh-autosuggestions.zsh
+fi 
 
 HISTSIZE="10000"
 SAVEHIST="100000"
@@ -27,58 +32,58 @@ if [[ $options[zle] = on ]]; then
   . $HOME/.config/zsh/fzf-keybindings.zsh
 fi
 
-# find out which distribution we are running on
-LFILE="/etc/*-release"
-MFILE="/System/Library/CoreServices/SystemVersion.plist"
-if [[ -f $LFILE ]]; then
-  _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
-elif [[ -f $MFILE ]]; then
-  _distro="macos"
-
-  # on mac os use the systemprofiler to determine the current model
-  _device=$(system_profiler SPHardwareDataType | awk '/Model Name/ {print $3,$4,$5,$6,$7}')
-
-  case $_device in
-    *MacBook*)     DEVICE="";;
-    *mini*)        DEVICE="󰇄";;
-    *)             DEVICE="";;
-  esac
-fi
-
-# set an icon based on the distro
-# make sure your font is compatible with https://github.com/lukas-w/font-logos
-case $_distro in
-    *kali*)                  ICON="ﴣ";;
-    *arch*)                  ICON="";;
-    *debian*)                ICON="";;
-    *raspbian*)              ICON="";;
-    *ubuntu*)                ICON="";;
-    *elementary*)            ICON="";;
-    *fedora*)                ICON="";;
-    *coreos*)                ICON="";;
-    *gentoo*)                ICON="";;
-    *mageia*)                ICON="";;
-    *centos*)                ICON="";;
-    *opensuse*|*tumbleweed*) ICON="";;
-    *sabayon*)               ICON="";;
-    *slackware*)             ICON="";;
-    *linuxmint*)             ICON="";;
-    *alpine*)                ICON="";;
-    *aosc*)                  ICON="";;
-    *nixos*)                 ICON="";;
-    *devuan*)                ICON="";;
-    *manjaro*)               ICON="";;
-    *rhel*)                  ICON="";;
-    *macos*)                 ICON="";;
-    *)                       ICON="";;
-esac
-
 if [ -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if command -v starship &> /dev/null
 then
+  # find out which distribution we are running on
+  LFILE="/etc/*-release"
+  MFILE="/System/Library/CoreServices/SystemVersion.plist"
+  if [[ -f $LFILE ]]; then
+    _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+  elif [[ -f $MFILE ]]; then
+    _distro="macos"
+
+    # on mac os use the systemprofiler to determine the current model
+    _device=$(system_profiler SPHardwareDataType | awk '/Model Name/ {print $3,$4,$5,$6,$7}')
+
+    case $_device in
+      *MacBook*)     DEVICE="";;
+      *mini*)        DEVICE="󰇄";;
+      *)             DEVICE="";;
+    esac
+  fi
+
+  # set an icon based on the distro
+  # make sure your font is compatible with https://github.com/lukas-w/font-logos
+  case $_distro in
+      *kali*)                  ICON="ﴣ";;
+      *arch*)                  ICON="";;
+      *debian*)                ICON="";;
+      *raspbian*)              ICON="";;
+      *ubuntu*)                ICON="";;
+      *elementary*)            ICON="";;
+      *fedora*)                ICON="";;
+      *coreos*)                ICON="";;
+      *gentoo*)                ICON="";;
+      *mageia*)                ICON="";;
+      *centos*)                ICON="";;
+      *opensuse*|*tumbleweed*) ICON="";;
+      *sabayon*)               ICON="";;
+      *slackware*)             ICON="";;
+      *linuxmint*)             ICON="";;
+      *alpine*)                ICON="";;
+      *aosc*)                  ICON="";;
+      *nixos*)                 ICON="";;
+      *devuan*)                ICON="";;
+      *manjaro*)               ICON="";;
+      *rhel*)                  ICON="";;
+      *macos*)                 ICON="";;
+      *)                       ICON="";;
+  esac
+
   if [ -f ~/.config/starship.toml ]; then
     export STARSHIP_DISTRO="$ICON"
     export STARSHIP_DEVICE="$DEVICE"
@@ -86,7 +91,6 @@ then
     eval "$(starship init zsh)"
   fi
 fi
-
 
 # disable standard terminal function CTRL-Q and CTRL-S
 # to stop output and resume
@@ -105,7 +109,6 @@ setopt PROMPT_CR
 export PROMPT_EOL_MARK=%B%S%#%s%b
 
 
-# Make directory listing when chaging directory {{{
 function chpwd() {
     if [ ! -t 1 ]; then
         # don't generate output when changing directory in a script
@@ -118,8 +121,7 @@ function chpwd() {
     [ "$numfiles" -gt "$numdisplayfiles" ] \
         && echo -e "\e[3m  (there are $((numfiles - numdisplayfiles)) more files in this folder)\e[23m"
 }
-# }}}
-#
+
 f() {
   local searchterm="''${1:-""}"
   shift
@@ -130,8 +132,6 @@ f() {
   fi
   return $?
 }
-zle -N fzf-search-files
-bindkey '^F' fzf-search-files
 
 # shift-tab : go backward in menu (invert of tab)
 bindkey '^[[Z' reverse-menu-complete
@@ -154,7 +154,6 @@ bindkey -v '^E' end-of-line
 bindkey -v '^B' backward-char
 bindkey -v '^W' backward-delete-word
 bindkey -v '^K' kill-line
-bindkey -v '^T' transpose-chars
 bindkey -v '^[f' forward-word
 bindkey -v '^[b' backward-word
 bindkey -v '^P' up-line-or-history
@@ -172,13 +171,13 @@ bindkey '^S' autosuggest-execute
 #bindkey    "^[[3~"          delete-char
 #bindkey    "^[3;5~"         delete-char
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if command -v kubectl &> /dev/null
 then
-    export KUBECONFIG=~/.kube/config
-    source <(kubectl completion zsh)
-    alias k=kubectl
-    complete -F __start_kubectl k
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  export KUBECONFIG=~/.kube/config
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  complete -F __start_kubectl k
 fi
 
 if command -v zoxide &> /dev/null
@@ -194,6 +193,11 @@ fi
 if command -v direnv &> /dev/null
 then
   eval "$(direnv hook zsh)"
+fi
+
+if command -v fzf &> /dev/null
+then
+  eval "$(fzf --zsh)"
 fi
 
 if [ -f ~/.zshenv ]; then
@@ -260,7 +264,6 @@ elif type compctl &>/dev/null; then
   }
   compctl -K _npm_completion npm
 fi
-
 export NVM_DIR="$HOME/.nvm"
     [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
     [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
