@@ -30,7 +30,16 @@ Host external-containers
 Host *.int.naimo84.dev
   User naimo
 
+Host hvaler
+  HostName 10.0.0.17
+  User naimo
+  
 Host 1337
   HostName 1337.tail1ae98.ts.net
+  User naimo 
+  ProxyJump naimo@10.0.0.70
+  
+Host spooky
+  HostName spooky.tail1ae98.ts.net
   User naimo 
   ProxyJump naimo@10.0.0.70
