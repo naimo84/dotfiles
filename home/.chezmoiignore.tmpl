@@ -4,6 +4,10 @@ LICENSE
 key.txt.age
 .oh-my-zsh/cache
 
+{{ if and (ne .chezmoi.os "darwin")  (ne .is_desktop true)  }}
+.oh-my-zsh
+{{ end }}
+
 {{ if ne .chezmoi.os "darwin" }}
 .osx
 Brewfile
@@ -11,7 +15,6 @@ Brewfile
 .config/ghostty
 .config/wezterm
 .ssh
-.oh-my-zsh
 {{ end }}
 
 {{ if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}

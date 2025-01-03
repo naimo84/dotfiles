@@ -1,4 +1,4 @@
-{{ if eq .chezmoi.os "darwin" }}
+{{ if or (eq .chezmoi.os "darwin") (eq .is_desktop true) }}
 [".oh-my-zsh"]
     type = "archive"
     url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
