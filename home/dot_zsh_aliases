@@ -45,7 +45,7 @@ alias gx='git undo'
 
 if command -v eza &> /dev/null; then
   alias la='eza --git -a'
-  alias ll='eza -l -g -a --sort=modified --git'
+  alias ll='eza -l --sort=modified -g -r --git --color=always'
   alias ls='eza --git'
 else
   alias la='ls -la'
