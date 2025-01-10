@@ -23,6 +23,8 @@ stty -ixon
 setopt PROMPT_SP
 setopt PROMPT_CR
 export PROMPT_EOL_MARK=%B%S%#%s%b
+setopt PROMPT_SUBST
+PROMPT='%F{green}%n@%F{yellow}%m:%f%~%f %F{red}$ %f'
 
 function chpwd() {
     if [ ! -t 1 ]; then # don't generate output when changing directory in a script
