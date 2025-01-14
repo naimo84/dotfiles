@@ -35,11 +35,11 @@ Host hvaler
   User naimo
   
 Host 1337
-  HostName 1337.tail1ae98.ts.net
+  HostName 1337.vaquita-royal.ts.net
   User naimo 
   ProxyJump naimo@10.0.0.70
   
 Host spooky
-  HostName spooky.tail1ae98.ts.net
+  HostName spooky.vaquita-royal.ts.net
   User naimo 
   ProxyJump naimo@10.0.0.70
