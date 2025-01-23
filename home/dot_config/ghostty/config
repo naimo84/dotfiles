@@ -5,14 +5,17 @@ font-thicken = true
 font-size = 14
 copy-on-select = true
 mouse-hide-while-typing = true
-window-decoration = false
-macos-titlebar-style = hidden
 
 window-padding-x = 20
-window-padding-y = 20
+window-padding-y = 5,20
 window-width = 140
 window-height = 35
-window-save-state = always
+
+
+window-decoration = true
+
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = left
 
 background = 2e2f41
 background-opacity = 0.85
