@@ -2,7 +2,6 @@ format = """\
 [](bg:#2e2f41b1 fg:#7DF9AA)\
 [${env_var.STARSHIP_DISTRO} ${env_var.USER} ](bg:#7DF9AA fg:#090c0c)\
 [](fg:#7DF9AA bg:#1C3A5E)\
-$time\
 [](fg:#1C3A5E bg:#3B76F0)\
 $directory\
 [](fg:#3B76F0 bg:#FCF392)\
@@ -11,6 +10,16 @@ $git_status\
 $git_metrics\
 [](fg:#FCF392 bg:#2e2f41b1)\
 $character\
+"""
+
+right_format = """\
+$cmd_duration\
+[](fg:#FC0302 bg:#2e2f41b1)\
+$hostname
+$python\
+
+$time\
+[](fg:#FCF392 bg:#2e2f41b1)\
 """
 
 
@@ -53,7 +62,8 @@ symbol = " "
 
 [cmd_duration]
 format = "[  $duration ]($style)"
-style = "fg:bright-white bg:18"
+min_time = 1_000
+style = "fg:bright-white bg:#1d2230"
 
 [character]
 success_symbol = '[ ➜](bold green) '
@@ -63,5 +73,17 @@ error_symbol = '[ ✗](#E84D44) '
 disabled = false
 time_format = "%R" # Hour:Minute Format
 style = "bg:#1d2230"
-format = '[[  $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+format = '[[  $time ](fg:#1C3A5E bg:#FCF392)]($style)'
 
+[python]
+format = '[󰌠 py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)[](fg:#1C3A5E bg:#FCF392)[](fg:#FCF392 bg:#1C3A5E)'
+version_format = "${major}(.${minor})"
+detect_extensions = []
+style = "fg:#1C3A5E bg:#FCF392"
+
+[hostname]
+ssh_only = false
+ssh_symbol = ' '
+format = '[$ssh_symbol on $hostname ](fg:#1C3A5E bg:#FC0302)[](fg:#1C3A5E bg:#FC0302)[](fg:#FCF392 bg:#1C3A5E)'
+trim_at = '.int.naimo84.dev'
+disabled = false
