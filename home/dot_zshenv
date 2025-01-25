@@ -38,3 +38,6 @@ export LC_TIME="en_US.UTF-8"
 export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt"
 export VISUAL="vim"
 export XDG_CONFIG_HOME="$HOME/.config"
+if [ -f ~/.config/sops/age/public_keys.txt ]; then
+  export SOPS_AGE_RECIPIENTS=$(<~/.config/sops/age/public_keys.txt)  
+fi
