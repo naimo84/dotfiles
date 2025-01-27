@@ -18,6 +18,13 @@ jobs:
           path: 'playbooks'
           ref: main
           github-server-url: https://gitea.naimo84.dev    
+      - name: Echo secrets
+        run: |
+          echo $SSH_PRIVATE_KEY | base64 -d >> ${{ github.workspace }}/playbooks/priv_key
+          chmod 600 ${{ github.workspace }}/playbooks/priv_key
+        shell: bash
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY_BASE64}}
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
