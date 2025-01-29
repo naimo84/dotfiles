@@ -11,11 +11,7 @@ local languages = {
   "yaml",
   "toml",
   "csv",
-  "kdl",
-  -- typesetting
-  "bibtex",
-  "latex",
-  "typst",
+  "kdl", 
   -- programming
   "go",
   "zig",
