@@ -9,19 +9,18 @@ $git_branch\
 $git_status\
 $git_metrics\
 [](fg:#FCF392 bg:#2e2f41b1)\
-$character\
-"""
-
-right_format = """\
-$cmd_duration\
-[](fg:#FC0302 bg:#2e2f41b1)\
-$hostname
+[](fg:#1C3A5E bg:#FC0302)\
+$hostname\
 $python\
-
 $time\
-[](fg:#FCF392 bg:#2e2f41b1)\
+[](fg:#FCF392 bg:#2e2f41b1)\
+$cmd_duration
+
+$character
 """
 
+[fill]
+symbol = ' '
 
 [env_var]
 [env_var.STARSHIP_DISTRO]
@@ -76,14 +75,14 @@ style = "bg:#1d2230"
 format = '[[  $time ](fg:#1C3A5E bg:#FCF392)]($style)'
 
 [python]
-format = '[󰌠 py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)[](fg:#1C3A5E bg:#FCF392)[](fg:#FCF392 bg:#1C3A5E)'
+format = '[ 󰌠 py ${pyenv_prefix}(${version})(\($virtualenv\))]($style)[](fg:#FCF392 bg:#1C3A5E)[](fg:#1C3A5E bg:#FCF392)'
 version_format = "${major}(.${minor})"
 detect_extensions = []
 style = "fg:#1C3A5E bg:#FCF392"
 
 [hostname]
 ssh_only = false
-ssh_symbol = ' '
-format = '[$ssh_symbol on $hostname ](fg:#1C3A5E bg:#FC0302)[](fg:#1C3A5E bg:#FC0302)[](fg:#FCF392 bg:#1C3A5E)'
+ssh_symbol = ''
+format = '[ $ssh_symbol $hostname ](fg:#1C3A5E bg:#FC0302)[](fg:#FC0302 bg:#1C3A5E)[](fg:#1C3A5E bg:#FCF392)'
 trim_at = '.int.naimo84.dev'
 disabled = false
