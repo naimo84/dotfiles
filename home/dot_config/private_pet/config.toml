@@ -1,0 +1,18 @@
+[General]
+Backend = "gist"
+Cmd = []
+Color = false
+Column = 40
+Editor = "nano"
+Format = "[$description]: $command $tags"
+SelectCmd = "fzf --ansi --layout=reverse --border --height=90% --pointer=* --cycle --prompt=Snippets:"
+SnippetDirs = []
+SnippetFile = "/home/naimo/.config/pet/snippet.toml"
+SortBy = ""
+
+[Gist]
+Public = false
+access_token = ""
+auto_sync = false
+file_name = "pet-snippet.toml"
+gist_id = ""
