@@ -1,6 +1,31 @@
+[[Snippets]]
+  Description = "get hostname and IP from ansible inventory file"
+  Output = ""
+  Tag = ["ansible"]
+  command = "ansible-inventory  --list -i inventory.yaml | jq '._meta.hostvars' | jq 'to_entries[]| {(.key): .value.ansible_host}' "
 
 [[Snippets]]
-  Description = "test"
+  Description = "SOPS encrypt - dotenv"
   Output = ""
-  Tag = []
-  command = "test"
+  Tag = ["sops"]
+  command = "sops encrypt --input-type dotenv .env"
+
+[[Snippets]]
+  Description = "SOPS decrypt - dotenv"
+  Output = ""
+  Tag = ["sops"]
+  command = "sops decrypt --input-type dotenv --output-type dotenv .env.enc"
+
+[[Snippets]]
+  Description = "OpenSSL - generate new CSR"
+  Output = ""
+  Tag = ["openssl"]
+  command = "openssl req -nodes -newkey rsa:4096 -keyout entdecke-deine-leidenschaft.de.de.key -out entdecke-deine-leidenschaft.de.csr -subj \"/C=DE/O=EDV/CN=entdecke-deine-leidenschaft.de\""
+
+[[Snippets]]
+  Description = "Convert DER .cer format to Base64 .CER"
+  Output = ""
+  Tag = ["openssl"]
+  command = "openssl x509 -inform der -in infile.cer -out outfile.cer"
+
+  

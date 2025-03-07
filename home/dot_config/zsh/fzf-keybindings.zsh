@@ -65,10 +65,15 @@ fzf-file-widget() {
   zle reset-prompt
   return $ret
 }
+
+
 zle     -N            fzf-file-widget
 bindkey -M emacs '^T' fzf-file-widget
 bindkey -M vicmd '^T' fzf-file-widget
 bindkey -M viins '^T' fzf-file-widget
+
+
+
 
 # ALT-C - cd into the selected directory
 fzf-cd-widget() {
@@ -134,7 +139,7 @@ bindkey '^R' fzf-history-widget
 bindkey -v '^A' beginning-of-line
 bindkey -v '^E' end-of-line
 
-bindkey -v '^W' backward-delete-word
+#bindkey -v '^W' backward-delete-word
 # alt+<- | alt+->
 bindkey -v '^[f' forward-word
 bindkey -v '^[b' backward-word

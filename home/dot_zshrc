@@ -209,6 +209,16 @@ if [[ $options[zle] = on ]]; then
   source $HOME/.config/zsh/fzf-completion.zsh
   source $HOME/.config/zsh/fzf-keybindings.zsh
 fi
+
+pet-select() {
+  BUFFER=$(pet search --query "$LBUFFER")
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+
+zle     -N            pet-select
+bindkey -v '^[P'          pet-select
+
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
@@ -270,3 +280,4 @@ if [ -f ~/.zsh_aliases ]; then
     source ~/.zsh_aliases
 fi
 ###--------------------- Sources ---------------------------------###
+
