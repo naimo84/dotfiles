@@ -1,0 +1,9 @@
+[
+	{
+		"name": "internal-container",
+		"rootPath": "vscode-remote://ssh-remote+internal-container/opt/containers",
+		"paths": [],
+		"tags": [],
+		"enabled": true
+	}
+]

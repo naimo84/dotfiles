@@ -2,16 +2,16 @@
 
 # Common flags for all teleport hosts
 Host *.teleport teleport.naimo84.dev
-  UserKnownHostsFile "C:\Users\neumann\.tsh\known_hosts"
-  IdentityFile "C:\Users\neumann\.tsh\keys\teleport.naimo84.dev\naimo84"
-  CertificateFile "C:\Users\neumann\.tsh\keys\teleport.naimo84.dev\naimo84-ssh\teleport-cert.pub"
+  UserKnownHostsFile "~\.tsh\known_hosts"
+  IdentityFile "~\.tsh\keys\teleport.naimo84.dev\naimo84"
+  CertificateFile "~\.tsh\keys\teleport.naimo84.dev\naimo84-ssh\teleport-cert.pub"
   HostKeyAlgorithms rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,ssh-rsa-cert-v01@openssh.com
 
 # Flags for all teleport hosts except the proxy
 Host *.teleport !teleport.naimo84.dev
   Port 3022
   User naimo
-  ProxyCommand "C:\Program Files\Tools\tsh.exe" proxy ssh --cluster=teleport --proxy=teleport.naimo84.dev:443 %r@%h:%p
+  ProxyCommand "~\tsh.exe" proxy ssh --cluster=teleport --proxy=teleport.naimo84.dev:443 %r@%h:%p
 # End generated Teleport configuration
 
 Host paperless
