@@ -107,12 +107,6 @@ return {
           filetypes = { "html", "templ", "heex" },
         }
       end,
-      ["elixirls"] = function()
-        lspconfig["elixirls"].setup {
-          capabilities = capabilities,
-          cmd = { vim.fn.expand "$HOME/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" },
-        }
-      end,
       ["jsonls"] = function()
         lspconfig["jsonls"].setup {
           capabilities = capabilities,

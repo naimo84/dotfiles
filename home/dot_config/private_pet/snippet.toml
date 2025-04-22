@@ -33,3 +33,9 @@
   Output = ""
   Tag = ["k8s"]
   command = "kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot"
+
+[[Snippets]]
+  Description = "remove all node_modules with fd"
+  Output = ""
+  Tag = ["shell"]
+  command = "fd -I node_modules -x rm -rf {};"
