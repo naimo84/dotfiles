@@ -28,4 +28,8 @@
   Tag = ["openssl"]
   command = "openssl x509 -inform der -in infile.cer -out outfile.cer"
 
-  
+[[Snippets]]
+  Description = "DevPod"
+  Output = ""
+  Tag = ["k8s"]
+  command = "kubectl run tmp-shell --rm -i --tty --image nicolaka/netshoot"
