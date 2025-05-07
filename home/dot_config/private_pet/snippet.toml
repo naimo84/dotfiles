@@ -1,3 +1,4 @@
+
 [[Snippets]]
   Description = "get hostname and IP from ansible inventory file"
   Output = ""
@@ -39,3 +40,9 @@
   Output = ""
   Tag = ["shell"]
   command = "fd -I node_modules -x rm -rf {};"
+
+[[Snippets]]
+  Description = "get all k8s ingress with path and host"
+  Output = ""
+  Tag = ["k8s"]
+  command = "kubectl get ingress -A -o=custom-columns='NAME:.metadata.name,SVCs:..spec.rules[].http.paths[].path,host:..spec.rules[].host'  | grep testmaint"
