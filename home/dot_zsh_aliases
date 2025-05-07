@@ -4,6 +4,7 @@ if command -v nvim &> /dev/null; then
 fi
 
 alias bat='bat -pp --theme base16-256 --italic-text always'
+alias ap='ansible-playbook  --vault-password-file ~/vaultkeyfile --private-key ~/dev/ansible/.ansible_key -i ~/dev/ansible/inventory/inventory.yaml '
 alias c='fzf-cd-widget'
 alias cp='cp -iv'
 alias curl='curl -v'

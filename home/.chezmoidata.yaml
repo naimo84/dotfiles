@@ -4,6 +4,7 @@ winget_packages:
     - JernejSimoncic.Wget
     - Microsoft.WindowsTerminal
     - Microsoft.VisualStudioCode
+    - direnv
     - eza-community.eza
   home:
     - jqlang.jq
