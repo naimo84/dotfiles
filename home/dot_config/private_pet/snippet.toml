@@ -46,3 +46,9 @@
   Output = ""
   Tag = ["k8s"]
   command = "kubectl get ingress -A -o=custom-columns='NAME:.metadata.name,SVCs:..spec.rules[].http.paths[].path,host:..spec.rules[].host'  | grep testmaint"
+
+[[Snippets]]
+  Description = "update all python packages"
+  Output = ""
+  Tag = ["python","pip"]
+  command = "pip3 list --outdated --format=json | jq -r '.[] | \"\\(.name)==\\(.latest_version)\"' | xargs -n1 pip3 install -U"
