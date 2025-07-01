@@ -1,9 +1,45 @@
 [
-	{
-		"name": "internal-container",
-		"rootPath": "vscode-remote://ssh-remote+internal-container/opt/containers",
-		"paths": [],
-		"tags": [],
-		"enabled": true
-	}
+    {
+        "name": "internal",
+        "rootPath": "vscode-remote://ssh-remote+internal-container/opt/containers/",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+    {
+        "name": "external",
+        "rootPath": "vscode-remote://ssh-remote+external-container/opt/containers/",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+    {
+        "name": "1337",
+        "rootPath": "vscode-remote://ssh-remote+1337/home/naimo/",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+    {
+        "name": "spooky",
+        "rootPath": "vscode-remote://ssh-remote+spooky/home/naimo/",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+    {
+        "name": "hvaler",
+        "rootPath": "vscode-remote://ssh-remote+hvaler/home/docker/",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    },
+
+    {
+        "name": "devbox",
+        "rootPath": "vscode-remote://ssh-remote+devbox/home/naimo/dev.code-workspace",
+        "paths": [],
+        "tags": [],
+        "enabled": true
+    }
 ]
