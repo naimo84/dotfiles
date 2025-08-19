@@ -11,9 +11,9 @@ jobs:
     name: chezmoi
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 
+        uses: actions/checkout@v5
         with:
-          repository: 'IaC/playbooks.git'
+          repository: 'IaC/playbooks'
           token: '${{ secrets.RENOVATE_TOKEN }}'
           path: 'playbooks'
           ref: main
