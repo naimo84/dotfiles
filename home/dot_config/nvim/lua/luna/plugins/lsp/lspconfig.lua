@@ -118,6 +118,12 @@ return {
           },
         }
       end,
+      -- TypeScript server temporarily disabled due to naming conflicts
+      -- ["tsserver"] = function()
+      --   lspconfig["tsserver"].setup {
+      --     capabilities = capabilities,
+      --   }
+      -- end,
     }
   end,
 }

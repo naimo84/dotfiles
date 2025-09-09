@@ -6,10 +6,10 @@ local lsp_servers = {
   "jsonls",
   "taplo",
   -- typesetting
-  "typst_lsp",
+  -- "typst-lsp", -- temporarily disabled due to naming issues
   -- programming
   "zls",
-  "ts_ls",
+  -- "typescript-language-server", -- temporarily disabled due to config issues
   "rust_analyzer",
   -- web
   "html",
