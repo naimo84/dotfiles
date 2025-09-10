@@ -77,7 +77,8 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    mason_lspconfig.setup_handlers {
+    -- Setup handlers for installed LSP servers
+    local handlers = {
       -- default handler for installed servers
       function(server_name)
         lspconfig[server_name].setup {
@@ -125,5 +126,14 @@ return {
       --   }
       -- end,
     }
+
+    -- Apply handlers to installed servers
+    local installed_servers = mason_lspconfig.get_installed_servers()
+    for _, server_name in ipairs(installed_servers) do
+      local handler = handlers[server_name] or handlers[1] -- Use specific handler or default
+      if handler then
+        handler(server_name)
+      end
+    end
   end,
 }
