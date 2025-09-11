@@ -12,5 +12,8 @@ winget_packages:
     - Kubernetes.kubectl
 
 brew_packages:
+  all: 
+    - fzf
+    - nvm
   desktop:
     - "starship"
