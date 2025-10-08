@@ -14,7 +14,6 @@ Brewfile
 .config/karabiner
 .config/ghostty
 .config/wezterm
-.ssh
 {{ end }}
 
 {{ if and (ne .chezmoi.os "linux") (ne .chezmoi.os "darwin") }}
@@ -25,6 +24,7 @@ Brewfile
 .zshenv
 .config/nvim
 .config/zsh
+.ssh
 {{ end }}
 
 {{- if ne .chezmoi.os "linux" -}}
